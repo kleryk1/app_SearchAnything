@@ -94,6 +94,13 @@ public class SearchFile extends SearchFile_Attributes {
 		return ret_val;
 	}
 	
+	public static String[] getFileList( String dir ) {
+		String[] ret_val = {};
+		SearchFile sf = new SearchFile( "", dir, false, false, false );
+		ret_val = sf.getSearchResults();
+		return ret_val;
+	}
+	
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	@Override public String toString() {
