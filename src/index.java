@@ -23,7 +23,8 @@ public class index extends PjFrame{
 		String dir = "D:\\Downloads";
 		
 		//args = new String[] { "-gui" };
-		args = new String[] { "-gui", "-fs", "> out_file.txt", "-a_rx true", "-a_sf Command", "-a_si "+dir, "-a_rx false", "-a_id true", "-a_cs true" };
+		//args = new String[] { "-gui", "-fs", "> out_file.txt", "-a_rx true", "-a_sf Command", "-a_si "+dir, "-a_rx false", "-a_id true", "-a_cs true" };
+		args = new String[] { "-gui", "-fs", "-a_rx true", "-a_sf Command", "-a_si "+dir, "-a_rx false", "-a_id true", "-a_cs true" };
 //		args = new String[] { "-gui", "-fs", "> out_file.txt", "-a_rx true", "-a_sf Command", "-a_si "+dir, "-a_rx false", "-a_id false", "-a_cs false" };
 		
 		PjArguments arguments;
