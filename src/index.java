@@ -5,6 +5,7 @@ import IF_Arg.PjArguments;
 import IF_Gui.PjFrame;
 import IF_Gui.TABS.TAB_GenerateCMD;
 import IF_Gui.TABS.TAB_Search;
+import SearchText.SearchText;
 
 public class index extends PjFrame{
 
@@ -33,6 +34,41 @@ public class index extends PjFrame{
 //    - M A I N
 	
 	public static void main( String[] args ) {
+		
+		
+		String dir = "D:\\Downloads";
+		
+		SearchText st = new SearchText();
+		
+		st.setSearchFor( "Command" );
+		st.setSearchIn( dir );
+		
+		st.setSearchWholeWordsOnly( false );
+		st.setSearchCaseSensitive( false );
+		st.setSearchRegEx( false );
+		st.setSearchHex( false );
+		st.setSearchNotContainingText( false );
+		
+		st.getSearchResults();
+		
+		String[] res = st.getLastResult();
+		for( String f : res ) { System.out.println( f ); }
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		args = new String[] { "-gui" };
 		//args = new String[] { "-gui", "-fs", "> out_file.txt", "-a_rx true", "-a_sf Command", "-a_si "+dir, "-a_rx false", "-a_id true", "-a_cs true" };
