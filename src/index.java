@@ -1,3 +1,4 @@
+import Utils.Utils_CmdPrompt;
 import Utils.Utils_Directory;
 
 public class index {
@@ -12,6 +13,11 @@ public class index {
 		for( String d : dirs ) {
 			System.out.println( d );
 		}
+		
+		
+		
+		Utils_CmdPrompt.openFolder( dir );
+		
 		
 	}
 	
