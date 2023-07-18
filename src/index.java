@@ -1,26 +1,50 @@
 
-import SearchFile.SearchFile;
+import java.io.IOException;
 
-public class index {
+import IF_Arg.PjArguments;
+import IF_Gui.PjFrame;
 
+public class index extends PjFrame{
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+//    -	Constructors																				//
+	
+	public index() {
+		super();
+		
+		
+		
+		
+		setVisible( true );
+	}
+	
 	public static void main( String[] args ) {
 		
 		String dir = "D:\\Downloads";
 		
-		SearchFile sf = new SearchFile();
+		//args = new String[] { "-gui" };
+		args = new String[] { "-gui", "-fs", "> out_file.txt", "-a_rx true", "-a_sf Command", "-a_si "+dir, "-a_rx false", "-a_id true", "-a_cs true" };
+//		args = new String[] { "-gui", "-fs", "> out_file.txt", "-a_rx true", "-a_sf Command", "-a_si "+dir, "-a_rx false", "-a_id false", "-a_cs false" };
 		
-		sf.setSearchFor( "Command" );
-		sf.setSearchIn( dir );
-		sf.setSearchRegEx( false );
-		sf.setSearchIncludeDirs( true );
-		sf.setSearchCaseSensitive( true );
+		PjArguments arguments;
+		try { arguments = new PjArguments( args );
+			if( arguments.isStartGui() ) {
+				
+				new index();
+				
+			}
+		} catch ( IOException ex ) { ex.printStackTrace(); }
 		
-		sf.getSearchResults();
+
 		
-		String[] res = sf.getLastResult();
-		
-		for( String f : res ) { System.out.println( f ); }
-		
+				
 	}
 	
-}
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2421075421460468515L;
+	
+} /* End-of File! */

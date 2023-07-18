@@ -38,18 +38,26 @@ public class SearchFile extends SearchFile_Attributes {
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 //    - get, set, is
 	
+	public boolean isComplete() {
+		return ( (search_for != null) && (search_in != null) );
+	}
+	
 	public String[] getSearchResults() {
 		String[] ret_val = {};
 		
-		String[] file_list = Utils_Files.getFileList( search_in, include_dirs );
-		for( String f : file_list ) { 
+		if( isComplete() ) {
 			
-			if( regex == false ) {
-				ret_val = Utils_ArrayOperations.concatWithArrayCopy( ret_val, getContains( f ) );
-			} else {
-				ret_val = Utils_ArrayOperations.concatWithArrayCopy( ret_val, getContainsRegex( f ) );
+			String[] file_list = Utils_Files.getFileList( search_in, include_dirs );
+			for( String f : file_list ) { 
+				
+				if( regex == false ) {
+					ret_val = Utils_ArrayOperations.concatWithArrayCopy( ret_val, getContains( f ) );
+				} else {
+					ret_val = Utils_ArrayOperations.concatWithArrayCopy( ret_val, getContainsRegex( f ) );
+				}
+				
 			}
-			
+		
 		}
 		
 		last_result = ret_val;
@@ -87,7 +95,22 @@ public class SearchFile extends SearchFile_Attributes {
 	}
 	
 //////////////////////////////////////////////////////////////////////////////////////////////////////
-
+	
+	@Override public String toString() {
+		String ret_val = super.toString() + " - ";
+		
+		ret_val += "Search for \"" + search_for + "\" in \"" + search_in + "\"";
+		if( !isComplete() ) { ret_val += " ERROR: SearchFile is not complete and cannot generate results!"; }
+		ret_val += "\n";
+		ret_val += "\t          regex: " + regex + "\n";
+		ret_val += "\t   inclide dirs: " + include_dirs + "\n";
+		ret_val += "\t case sensitive: " + case_sensitive + "\n";
+		
+		return ret_val;
+	}
+	
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+	
 } /* End-of File! */
 
 /*
