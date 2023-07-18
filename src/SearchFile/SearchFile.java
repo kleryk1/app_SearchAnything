@@ -9,9 +9,11 @@ import Utils.Utils_Files;
 
 /** 
  * ToDo - implement case_sensitive filter (the value is set but not used)
+ * ToDo - regex usage must be finished
  * 
- * @author alint
- *
+ * @author Kleryk
+ * @date 18.07.2022
+ * @version 1.0
  */
 public class SearchFile extends SearchFile_Attributes {
 
@@ -74,8 +76,6 @@ public class SearchFile extends SearchFile_Attributes {
 //		Pattern pattern = Pattern.compile( "(\\[)(.*?)(\\])" );
 		Pattern pattern = Pattern.compile( "([^\\\\s]+(\\\\.(?i)(nfo|png|gif|bmp))$)" );
 		
-		// ToDo - regex usage must be finished
-		
         Matcher matcher = pattern.matcher( string );
 
         while( matcher.find() )
@@ -93,11 +93,13 @@ public class SearchFile extends SearchFile_Attributes {
 /*
 		String dir = "D:\\Downloads";
 		
-		SearchFile sf = new SearchFile( "Kane", dir, false );
+		SearchFile sf = new SearchFile();
 		
-		sf.setSearchFor( "Kane" );
+		sf.setSearchFor( "Command" );
 		sf.setSearchIn( dir );
 		sf.setSearchRegEx( false );
+		sf.setSearchIncludeDirs( true );
+		sf.setSearchCaseSensitive( true );
 		
 		sf.getSearchResults();
 		
