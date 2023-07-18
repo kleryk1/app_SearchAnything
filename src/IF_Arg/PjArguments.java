@@ -186,7 +186,9 @@ public class PjArguments {
 			}
 		}
 		
-		bw.close();
+		if( out_file != null ) { out_file = null; }
+		if( bw != null ) { bw.close(); }
+		
 	}
 	
 //////////////////////////////////////////////////////////////////////////////////////////////////////
