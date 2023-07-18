@@ -21,3 +21,11 @@ public class Utils_CmdPrompt {
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* End-of File! */
+
+/*
+ 		String dir = "D:\\Downloads";
+		
+		try {
+			Utils_CmdPrompt.openFolder( dir );
+		} catch ( IOException ex ) { ex.printStackTrace(); }
+ */
