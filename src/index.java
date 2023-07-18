@@ -1,3 +1,6 @@
+import java.io.IOException;
+
+import Utils.Utils_CmdPrompt;
 import Utils.Utils_Directory;
 
 public class index {
@@ -13,6 +16,10 @@ public class index {
 		
 		String[] dirs = Utils_Directory.getDirList( dir );
 		for( String d : dirs ) { System.out.println( d ); }
+		
+		try {
+			Utils_CmdPrompt.openFolder( dir );
+		} catch ( IOException ex ) { ex.printStackTrace(); }
 		
 	}
 	
