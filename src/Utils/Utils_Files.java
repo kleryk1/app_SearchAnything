@@ -2,28 +2,35 @@ package Utils;
 
 import java.io.File;
 
-public class Utils_Directory {
+public class Utils_Files {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 //    -	Constructors																				//
-	
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 //    - get, set, is
 	
-	public static boolean isDirectory( String dir ) {
-		File f = new File( dir );
+	public static boolean isFile( String file ) {
+		File f = new File( file );
 		
 		// ToDo - test if isDirectory() identifies correctly
 		
-		return f.isDirectory();
+		return !f.isDirectory();
 	}
 	
-	public static String[] getDirList( String dir ) {
-		String[] ret_val = null;
-		File f = new File( dir );
+	public static String[] getFileList( String dir, boolean include_dirs ) {
+		String[] ret_val = {};
 		
-		if( isDirectory( dir ) ) {
-			ret_val = Utils_ArrayOperations.concatWithArrayCopy( new String[]{ f.getAbsolutePath() }, getDirList( f ) );
+		/* get a list of all directories */
+		String[] dir_list = Utils_Directory.getDirList( dir );
+		for( String d : dir_list ) { 
+			
+			if( include_dirs ) {
+				ret_val = Utils_ArrayOperations.concatWithArrayCopy( ret_val, new String[]{ d } );
+			}
+			
+			ret_val = Utils_ArrayOperations.concatWithArrayCopy( ret_val, getFileList( new File( d ) ) );
+			
 		}
 		
 		return ret_val;
@@ -32,31 +39,18 @@ public class Utils_Directory {
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 //    - S T A T I C
 	
-	private static String[] getDirList( File dir ) {
+	private static String[] getFileList( File dir ) {
 		String[] ret_val = {};
 
 		for( File f : dir.listFiles() ) {
-			if( isDirectory( f.getAbsolutePath() ) ) {
+			if( isFile( f.getAbsolutePath() ) ) {
 				ret_val = Utils_ArrayOperations.concatWithArrayCopy( ret_val, new String[]{ f.getAbsolutePath() } );
-				ret_val = Utils_ArrayOperations.concatWithArrayCopy( ret_val, getDirList( f ) );
 			}
 		}
 		
 		return ret_val;
 	}
-	
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
 } /* End-of File! */
-
-/*
- 		String dir = "D:\\Downloads";
-		
-		if( Utils_Directory.isDirectory( dir ) ) {
-			System.out.println( "YES \"" + dir + "\" is a directory." );
-		}
-		
-		String[] dirs = Utils_Directory.getDirList( dir );
-		for( String d : dirs ) { System.out.println( d ); }
-		
- */
