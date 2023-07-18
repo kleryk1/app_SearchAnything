@@ -1,8 +1,5 @@
-import java.io.IOException;
 
 import SearchFile.SearchFile;
-import Utils.Utils_CmdPrompt;
-import Utils.Utils_Directory;
 
 public class index {
 
@@ -10,18 +7,15 @@ public class index {
 		
 		String dir = "D:\\Downloads";
 		
-		String search_for = "fsfsfe";
-		String Search_in = dir;
+		SearchFile sf = new SearchFile( "Kane", dir, false );
 		
+		sf.setSearchFor( "Kane" );
+		sf.setSearchIn( dir );
+		sf.setSearchRegEx( false );
 		
-		SearchFile sf = new SearchFile();
+		String[] res = sf.getSearchResults();
 		
-		
-		
-		
-		
-		
-		
+		for( String f : res ) { System.out.println( f ); }
 		
 	}
 	
