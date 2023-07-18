@@ -2,7 +2,7 @@ package SearchFile;
 
 class SearchFile_Attributes {
 
-	protected String search_for = "fsfsfe";
+	protected String search_for = null;
 	protected String search_in = null;
 	protected boolean regex = false;
 	protected boolean include_dirs = true;
