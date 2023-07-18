@@ -11,17 +11,21 @@ public class Utils_Directory {
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 //    - get, set, is
 	
-	public static String[] getDirList( String dir ) {
-		String[] ret_val = null;
-		
+	public static boolean isDirectory( String dir ) {
 		File f = new File( dir );
 		
-		if( f.isDirectory() ) { // ToDo - test if isDirectory() identifies correctly 
-			
-			ret_val = concatWithArrayCopy( new String[]{ f.getAbsolutePath() }, getDirList( f ) );
-			
-		}
+		// ToDo - test if isDirectory() identifies correctly
 		
+		return f.isDirectory();
+	}
+	
+	public static String[] getDirList( String dir ) {
+		String[] ret_val = null;
+		File f = new File( dir );
+		
+		if( isDirectory( dir ) ) {
+			ret_val = concatWithArrayCopy( new String[]{ f.getAbsolutePath() }, getDirList( f ) );
+		}
 		
 		return ret_val;
 	}
@@ -33,7 +37,7 @@ public class Utils_Directory {
 		String[] ret_val = {};
 
 		for( File f : dir.listFiles() ) {
-			if( f.isDirectory() ) {
+			if( isDirectory( f.getAbsolutePath() ) ) {
 				ret_val = concatWithArrayCopy( ret_val, new String[]{ f.getAbsolutePath() } );
 				ret_val = concatWithArrayCopy( ret_val, getDirList( f ) );
 			}
@@ -41,7 +45,6 @@ public class Utils_Directory {
 		
 		return ret_val;
 	}
-
 
 	private static String[] concatWithArrayCopy( String[] main, String[] add ) {
 		String[] ret_val = Arrays.copyOf( main, main.length + add.length );
