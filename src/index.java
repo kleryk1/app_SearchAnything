@@ -27,8 +27,6 @@ public class index extends PjFrame{
 		setContentPane( main_panel );
 		setVisible( true );
 	}
-	
-
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 //    - M A I N
@@ -36,7 +34,7 @@ public class index extends PjFrame{
 	public static void main( String[] args ) {
 		
 		
-		String dir = "D:\\Downloads";
+		String dir = "X:\\SandBoxes\\Defiant_SandBox\\JavaLibrariesGit\\app_SearchAnything";
 		
 		SearchText st = new SearchText();
 		

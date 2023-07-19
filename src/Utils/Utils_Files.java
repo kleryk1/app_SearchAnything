@@ -78,6 +78,15 @@ public class Utils_Files {
 		return ret_val;
 	}
 	
+	
+	public static String getFileExtention( String file ) {
+		String ret_val = null;
+		if (file.contains(".")) {
+			ret_val = file.substring(file.lastIndexOf("."));
+		}
+		return ret_val;
+	}
+	
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 //    - S T A T I C
 	
