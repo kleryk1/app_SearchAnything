@@ -34,7 +34,7 @@ public class index extends PjFrame{
 	public static void main( String[] args ) {
 		
 		
-		String dir = "X:\\SandBoxes\\Defiant_SandBox\\JavaLibrariesGit\\app_SearchAnything";
+		String dir = ".";
 		
 		SearchText st = new SearchText();
 		
