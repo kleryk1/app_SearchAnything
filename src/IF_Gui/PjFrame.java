@@ -13,6 +13,7 @@ public class PjFrame extends JFrame {
 
 	/** Content panel replacement */
 	protected JTabbedPane main_panel = new JTabbedPane();
+	//protected PjPanel main_panel = new PjPanel();
 	
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 //    -	Constructors																				//
