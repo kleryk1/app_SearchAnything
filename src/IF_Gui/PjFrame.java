@@ -21,7 +21,7 @@ public class PjFrame extends JFrame {
 		super();
 	
 		setLocation( 100, 100 );
-		setSize( 850, 200 );
+		setSize( 850, 300 );
 		setDefaultCloseOperation( EXIT_ON_CLOSE );
 		setTitle( app_name );
 		
