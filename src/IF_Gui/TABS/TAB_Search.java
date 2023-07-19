@@ -13,6 +13,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import IF_Gui.PjPanel;
+import SearchFile.SearchFile;
+import SearchText.SearchText;
 import Utils.Utils_Components;
 
 public class TAB_Search extends PjPanel implements TAB_Interface{
@@ -32,6 +34,9 @@ public class TAB_Search extends PjPanel implements TAB_Interface{
 	private JCheckBox enable_text_search = new JCheckBox( "Find text: " );
 	private JTextField text_search_for = new JTextField();
 	
+	private SearchFile fs = new SearchFile();
+	private SearchText ts = new SearchText();
+	
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 //    -	Constructors																				//
 	
@@ -45,9 +50,9 @@ public class TAB_Search extends PjPanel implements TAB_Interface{
 		/* add file search for input field */
 		panel_resize_list.add( Utils_Components.getFileChooser( x, y, frame_width, "Search in:", search_in, choose ) );		x+=100; y+=23;
 
-		add( Utils_Components.getCheckBox( x, y, regex ) );						         									x+=60; y+=0;
-		add( Utils_Components.getCheckBox( x, y, include_dirs ) );												            x+=100; y+=0;
-		add( Utils_Components.getCheckBox( x, y, case_sensitive ) );													    x=0; y+=20;
+		add( Utils_Components.getCheckBox( x, y, regex, fs.actSetRegex( regex ), fs.isRegex() ) );										x+=60; y+=0;
+		add( Utils_Components.getCheckBox( x, y, include_dirs, fs.actSetIncludeDirs( include_dirs ), fs.isSetIncludeDirs() ) );			x+=100; y+=0;
+		add( Utils_Components.getCheckBox( x, y, case_sensitive, fs.actSetCaseSensitive( case_sensitive ), fs.isSetCaseSensitive() ) );	x=0; y+=20;
 
 		/* FixMe - line is not displayed */
 		JSeparator line = new JSeparator( SwingConstants.HORIZONTAL );
@@ -110,6 +115,15 @@ public class TAB_Search extends PjPanel implements TAB_Interface{
 			@Override public void actionPerformed( ActionEvent evt ) {
 				// ToDo - enable text components
 				text_search_for.setEditable( enable_text_search.isSelected() );
+				include_dirs.setEnabled( !enable_text_search.isSelected() );
+				
+				if( enable_text_search.isSelected() ) {
+					include_dirs.setEnabled( false );
+					fs.setSearchIncludeDirs( false );
+				}else{
+					fs.setSearchIncludeDirs( include_dirs.isSelected() );
+				}
+
 			}
 		};
 		return ret_val;

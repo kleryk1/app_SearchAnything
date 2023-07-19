@@ -68,8 +68,10 @@ public class Utils_Components {
 
 
 
-	public static Component getCheckBox( int x, int y, JCheckBox comp ) {
-		comp.setLocation( x, y ); 
+	public static Component getCheckBox( int x, int y, JCheckBox comp, ActionListener action, boolean b ) {
+		comp.setSelected( b );
+		comp.setLocation( x, y );
+		comp.addActionListener( action );
 		return comp;
 	}
 
